@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2015-11-11 00:46:28
+Date: 2015-11-11 00:50:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -81,4 +81,4 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'f2-in', 'b\'$2b$12$yXdCE9lf3GpjjT1FRS7sBOBpfnzEmy2BSY7NvucQkp2fUqOZrVynm\'', '浩子', '2015-11-03', 'admin');
+INSERT INTO `user` VALUES ('1', 'admin', 'b\'$2b$10$3yMMZvlcsvPSZ/rf3mqkOu7K.rWTVy1VI7mH2T/u8vn51/XuVCyeS\'', 'admin', '2015-11-03', 'admin');
