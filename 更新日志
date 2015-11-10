@@ -1,0 +1,36 @@
+10月21日=========
+1.OSError: [WinError 10038] 在一个非套接字上尝试了一个操作。
+更新方法：貌似忘了加逗号
+2.{% extends "common/main.html" %}
+继承模板可以直接写路径
+3.使用Tornado的XSRF保护
+代码中：
+settings = {
+    "cookie_secret": "bZJc2sWbQLKos6GkHn/VB9oXwQt8S0R0kRvJ5/xJ89E=",
+    "xsrf_cookies": True
+}
+application = tornado.web.Application([
+    (r'/', MainHandler),
+    (r'/purchase', PurchaseHandler),
+], **settings)
+HTML中：
+<form action="/purchase" method="POST">
+    {% raw xsrf_form_html() %}
+    <input type="text" name="title" />
+    <input type="text" name="quantity" />
+    <input type="submit" value="Check Out" />
+</form>
+4.注意模板的继承路径
+5.使用 python setup.py install 安装mysql驱动(mysql官方的connector)
+6.@property广泛应用在类的定义中，可以让调用者写出简短的代码，同时保证对参数进行必要的检查，这样，程序运行时就减少了出错的可能性。
+7.重写了mysqldb：
+已经可以在controll中使用self.db
+也可以在DB中使用
+8.开启字典cursor = cnx.cursor(dictionary=True)
+9.添加Markdown解析使用Markdown2模块
+10AttributeError: 'MySQLConverter' object has no attribute '_unicodewithattrs_to_mysql'
+11.autoescape=None,关闭自动转义
+12.如果需要使用tornado用户认证功能@tornado.web.authenticated
+必须做如下步骤：需要定义 handler 的 get_current_user() 方法 例如：继承默认handler重写get_current_user() 目的在于发现自定义的cookie名字
+13.将list等解析成json:
+json.dumps(list,cls=DatetimeEncoder,ensure_ascii=False)

@@ -1,0 +1,17 @@
+{% extends "common/main.html" %}
+{% block title %}
+<title>代码如诗</title>
+{% end %}
+{% block body %}
+
+                <ul>
+                {% for l in list %}
+                <li>
+                        <a class='i_title' u="{{l['url']}}">{{l['title']}}</a>
+                        <div class="dis">
+                            {{l['content']}}
+                        </div>
+                </li>
+                {% end %}
+                </ul>
+{% end %}

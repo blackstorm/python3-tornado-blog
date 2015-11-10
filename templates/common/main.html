@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+    {% end %}
+    <link rel="stylesheet" href={{ static_url("css/style.css") }}>
+    <meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+</head>
+<body>
+    <div class="main">
+    {% block header %}
+        <header>
+        <div class="logo">
+            <a href="/"><img src="/static/img/logo.png" alt="代码如诗" height="150" width="300"></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">岁月如歌</a></li><li><a href="#">分类</a></li>
+                <li><a href="/">首页</a></li>
+                <li><a href="#">GitHub</a></li><li><a href="/about">关于我</a></li>
+            </ul>
+        </nav>
+        </header>
+{% end %}
+
+    <div class="content" id = "content">
+        {% block body %}{% end %}
+    </div>
+    </div>
+    <footer>
+            {% block footer %}
+                基于Tornado·<a href="http://gothub.com" target="_blank">GitHub</a> <a href="/signin">登陆</a> <a href="/write">发表</a>
+            {% end %}
+    </footer>
+    <script src="{{ static_url('js/jquery-2.1.4.js') }}"></script>
+    <script src="{{ static_url('js/main.js') }}"></script>
+</body>
+</html>

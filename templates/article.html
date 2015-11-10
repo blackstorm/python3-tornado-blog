@@ -1,0 +1,11 @@
+{% extends "common/main.html" %}
+{% block title %}
+<title>{{title}}</title>
+{% end %}
+{% block body %}
+    <section class="post">
+        <div class="date">24 Mar 2015</div>
+        <h1>{{article['title']}}</h1>
+        {{article['content']}}
+    </section>
+{% end %}

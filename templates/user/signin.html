@@ -1,0 +1,23 @@
+{% extends "../common/main.html" %}
+{% block title %}
+<title>{{title}}</title>
+{% end %}
+{% block body %}
+        <table class="table">
+            <tbody>
+                <form action="/signin" method="post">
+                    <tr>
+                        <td>用户名：</td>
+                        <td><input class="finput" type="text" name="username"></td>
+                    </tr>
+                    <tr>
+                        <td>密码：</td>
+                        <td><input class="finput" type="password" name="password"></td>
+                    </tr>
+                    <tr>
+                       <td><input class="btn" type="submit" value="Go"></td>
+                    </tr>
+                </form>
+            </tbody>
+        </table>
+{% end %}
