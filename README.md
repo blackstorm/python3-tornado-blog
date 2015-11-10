@@ -8,6 +8,6 @@ python3+tornado+mysql Simple blog.
   tornado+python3+mysql+mysql-connector-python-2.0.3+bcrypt
 如何使用
 -----------------------------------  
-  在config中配置你的数据库连接信息，注意！mydb中有一个BUG，以后慢慢完善
+  在config中配置你的数据库连接信息，注意！dao.py中还需要再配置一遍，额，拖延症。。。
   
   python>run.py 启动服务器
