@@ -16,6 +16,6 @@ def findUserNameReturnPassWord(username):
     db.cursor.execute(sql,{'username':username})
     return db.cursor.fetchone()
 def getComments(aid):
-    sql = "SELECT * FROM comments WHERE aid = %(aid)s"
+    sql = "SELECT author,content,created FROM comments WHERE aid = %(aid)s AND status='public'"
     db.cursor.execute(sql,{'aid':aid})
     return db.cursor.fetchall()
