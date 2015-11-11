@@ -20,7 +20,7 @@ art.ajax = function(url){
             alert("发生未知错误");
         }
     });
-}
+};
 art.data = function(data){
     //文章标题和日期
     var section = document.createElement('section');
@@ -32,13 +32,16 @@ art.data = function(data){
     div.innerHTML = data.article['created'];
     h1.innerHTML = data.article['title'];
     $("#content>section").append(div,h1,data.article['content']);
-    //评论
-    var comment = document.createElement('div');
-    comment.className = 'block';
+    //评论列表
+    if(data.comments.length>0){
+        $(".main").append(comments.listlayout(data.comments))
+    }
+    //评论表单
+    var comment = $("<div id='comm' class='block'>");
     $(".main").append(comment);
-    $('.main>.block').append(comments.getlayout(data.article['aid']));
+    $('#comm').append(comments.getlayout(data.article['aid']));
     ld.layout(false);
-}
+};
 
 /*loader动画*/
 var ld = {};
@@ -52,7 +55,7 @@ ld.layout = function(bool){
     }else{
         $('.ball-scale').remove();
     }
-}
+};
 
 var comments = {};
 comments.getlayout = function(aid){
@@ -61,8 +64,8 @@ comments.getlayout = function(aid){
     aidinput.attr('value',aid);
     nameinput = $("<input type='text' name='username' placeholder='昵称'/>");
     emailinput = $("<input type='email' name='email' placeholder='Email'/>");
-    urlinput = $("<input type='url' name='url' placeholder='个人网址'/>");
-    content = $("<textarea type='text' name='content' placeholder='支持M语法，不可为空'></textarea>");
+    urlinput = $("<input type='url' name='url' placeholder='如果您想留下您的个人地址'/>");
+    content = $("<textarea type='text' name='content' placeholder='支持markdown语法，不可为空'></textarea>");
     submitbtn = $("<button type='button' class='btn' onclick='comments.submit();'>发表</button>");
     form.append(aidinput);
     form.append(nameinput);
@@ -71,7 +74,7 @@ comments.getlayout = function(aid){
     form.append(content);
     form.append(submitbtn);
     return form;
-}
+};
 comments.submit = function(){
     from = $("#commentform").serialize();
     $.ajax({
@@ -86,4 +89,23 @@ comments.submit = function(){
             alert("发生未知错误");
         }
     });
-}
+};
+comments.listlayout = function(comlist){
+    var llayout = $("<div id='commentslist' class='block'>");
+    for(var item in comlist){
+        var c_item = $("<div class='c_item'></div>");
+        var c_info = $("<div class='c_info'></div>");
+        var c_content = $("<div class='c_content'></div>");
+        var author = $("<span class='uname'></span>");
+        var timestamp = $("<span class='timestamp'></span>");
+        author.html(comlist[item].author);
+        timestamp.html(comlist[item].created);
+        c_info.append(author,timestamp);
+        var c_content = $("<div class='c_content'></div>");
+        c_content.html(comlist[item].content);
+        c_item.append(c_info);
+        c_item.append(c_content);
+        llayout.append(c_item);
+    }
+    return llayout;
+};

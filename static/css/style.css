@@ -247,13 +247,13 @@ section.post h1 {
     animation: ball-scale 1s 0s ease-in-out infinite; }
 .block {
     border-top: 1px solid #efefef;
-    border-bottom: 1px solid #efefef;
+    color: #666;
     padding: 30px 60px;
 }
 #commentform input{
     text-align: left;
     width: 50%;
-    border-radius: 4px;
+    border-radius:2px;
     border: solid 1px #DAD0D0;
     height: 23px;
     margin-bottom: 5px;
@@ -262,5 +262,29 @@ section.post h1 {
     border-radius: 4px;
     border: solid 1px #DAD0D0;
     width: 80%;
-    height: 150px;
+    height:80px;
+}
+#commentslist{
+    border:0px;
+}
+.uname {
+    font-weight: bold;
+}
+.c_info span{
+    font-size: 12px;
+    color: #999;
+}
+.timestamp {
+    margin-left: 10px;
+}
+.c_item{
+    margin-bottom: 10px;
+    border-bottom: 1px dashed #efefef;
+    padding: 10px;
+    padding-top: 0;
+    padding-bottom: 10px;
+}
+.c_item .c_content{
+    word-break: break-all;
+    overflow-x: hidden;
 }
