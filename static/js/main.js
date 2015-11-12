@@ -5,6 +5,7 @@ $(document).ready(function(){
         ld.layout(true);
     });
 });
+/*文章*/
 var art = {};
 art.ajax = function(url){
     //alert("ajax"+url);
@@ -21,6 +22,7 @@ art.ajax = function(url){
         }
     });
 };
+/*文章内页渲染*/
 art.data = function(data){
     //文章标题和日期
     var section = document.createElement('section');
@@ -34,7 +36,7 @@ art.data = function(data){
     $("#content>section").append(div,h1,data.article['content']);
     //评论列表
     if(data.comments.length>0){
-        $(".main").append(comments.listlayout(data.comments))
+        $(".main").append(comments.listlayout(data.comments));
     }
     //评论表单
     var comment = $("<div id='comm' class='block'>");
@@ -56,8 +58,9 @@ ld.layout = function(bool){
         $('.ball-scale').remove();
     }
 };
-
+/*评论*/
 var comments = {};
+/*评论表单样式*/
 comments.getlayout = function(aid){
     form = $("<form id='commentform'></form>");
     aidinput = $("<input type='hidden' name='aid' />");
@@ -75,6 +78,7 @@ comments.getlayout = function(aid){
     form.append(submitbtn);
     return form;
 };
+/*评论表单提交*/
 comments.submit = function(){
     from = $("#commentform").serialize();
     $.ajax({
@@ -83,13 +87,20 @@ comments.submit = function(){
         type:"post",
         dataType: "json",
         success:function(data){
-            alert(data);
+            if(data.msg['status']=="bad"){
+                alert(data.msg['msg']);
+                return;
+            }
+            alert(data.msg['status']);
+            var llayout = comments.listlayout(data.comments);
+            comments.redrawListLayout(llayout);
         },
         error:function(){
             alert("发生未知错误");
         }
     });
 };
+/*评论列表渲染*/
 comments.listlayout = function(comlist){
     var llayout = $("<div id='commentslist' class='block'>");
     for(var item in comlist){
@@ -108,4 +119,13 @@ comments.listlayout = function(comlist){
         llayout.append(c_item);
     }
     return llayout;
+};
+/*重绘评论列表*/
+comments.redrawListLayout = function(llayout){
+    //移除原有评论列表
+    $('#commentslist').remove();
+    //插入渲染过的评论列表
+    $('#comm').before(llayout);
+    //置空评论表单
+    $('#commmentform').reset();
 };

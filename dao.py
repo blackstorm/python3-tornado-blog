@@ -16,6 +16,10 @@ def findUserNameReturnPassWord(username):
     db.cursor.execute(sql,{'username':username})
     return db.cursor.fetchone()
 def getComments(aid):
-    sql = "SELECT author,content,created FROM comments WHERE aid = %(aid)s AND status='public'"
+    sql = "SELECT author,content,created FROM comments WHERE aid = %(aid)s AND status='public' ORDER BY cid DESC"
     db.cursor.execute(sql,{'aid':aid})
     return db.cursor.fetchall()
+
+def addComment(data):
+    sql = "INSERT INTO comments (aid, author,email,url,content,created) VALUES( %s, %s, %s, %s, %s, CURRENT_TIMESTAMP() ) "
+    db.cursor.execute(sql,data)
