@@ -5,7 +5,7 @@ from tool.jsonencoder import DatetimeEncoder
 import json
 class Index(BaseHandler):
     def get(self):
-        list = self.db.only_sql('select * from article ORDER BY aid DESC LIMIT 10')#返回值为一个list list保存字典
+        list = self.db.only_sql('select url,title,content from article ORDER BY aid DESC LIMIT 0,10')#返回值为一个list list保存字典
         #一个json
         # jsonlist = json.dumps(list,cls=DatetimeEncoder,ensure_ascii=False)
         # print(jsonlist)

@@ -6,7 +6,7 @@ import dao
 class Write(UserHandler):
     @tornado.web.authenticated
     def get(self):
-        self.render("user/new_article.html")
+        self.render("page/new_article.html")
     @tornado.web.authenticated
     def post(self):
         title = self.get_argument('title')

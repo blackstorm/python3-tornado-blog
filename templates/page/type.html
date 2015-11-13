@@ -1,0 +1,30 @@
+{% extends "../common/main.html" %}
+{% block title %}
+<title>关于我</title>
+{% end %}
+{% block body %}
+    <h2>life</h2>
+    <ul class="type-list">
+    {% for l in life %}
+        <li>
+            <a class='i_title' u="{{l['url']}}">{{l['title']}}</a>
+        </li>
+    {% end %}
+    </ul>
+<h2>Code</h2>
+    <ul class="type-list">
+    {% for l in code %}
+        <li>
+            <a class='i_title' u="{{l['url']}}">{{l['title']}}</a>
+        </li>
+    {% end %}
+    </ul>
+<h2>Other</h2>
+    <ul class="type-list">
+    {% for l in other %}
+        <li>
+            <a class='i_title' u="{{l['url']}}">{{l['title']}}</a>
+        </li>
+    {% end %}
+    </ul>
+{% end %}

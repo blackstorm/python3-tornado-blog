@@ -1,0 +1,24 @@
+{% extends "../common/main.html" %}
+{% block title %}
+<title>发表文章</title>
+{% end %}
+{% block body %}
+<table class="art">
+    <tbody>
+    <form action="/write" method="post">
+        <tr>
+            <td><input class="myTitle" type="text" name='title' placeholder="请输入标题"></td>
+        </tr>
+        <tr>
+            <td><textarea class='myContent' type='text' name="content"></textarea></td>
+        </tr>
+        <tr>
+            <td><input  class='myUrl' type="text" name="url" placeholder="请输入Url"></td>
+        </tr>
+        <tr>
+            <td><input class="btn" type="submit" value="提交"></td>
+        </tr>
+    </form>
+    </tbody>
+</table>
+{% end %}

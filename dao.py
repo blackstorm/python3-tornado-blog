@@ -1,7 +1,11 @@
-# -*- coding: utf-8 -*-
 from mydb import TornaDB
-from tornado.options import options
-db = TornaDB.Connection(host='127.0.0.1',port='3306',database='blog',user='root',password='root')
+import cfg
+db = TornaDB.Connection(host=cfg.get_db_host(),
+                        port=cfg.getPort(),
+                        database=cfg.get_db_database(),
+                        user=cfg.get_db_user(),
+                        password=cfg.get_db_pass()
+                        )
 def getArticle(url):
     sql = ("SELECT a.aid,a.url,a.title,a.content,a.created,a.allowComment FROM article a WHERE url=%(url)s LIMIT 1")
     db.cursor.execute(sql,{ 'url': url })
@@ -23,3 +27,8 @@ def getComments(aid):
 def addComment(data):
     sql = "INSERT INTO comments (aid, author,email,url,content,created) VALUES( %s, %s, %s, %s, %s, CURRENT_TIMESTAMP() ) "
     db.cursor.execute(sql,data)
+
+def selectTypeArticle(type):
+    sql = "SELECT url,title FROM article WHERE type = %(type)s ORDER BY aid DESC LIMIT 20"
+    db.cursor.execute(sql,{'type':type})
+    return  db.cursor.fetchall()

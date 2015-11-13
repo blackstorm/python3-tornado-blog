@@ -5,9 +5,8 @@ from controller.article import Article
 from controller.signin import Signin
 from controller.write import Write
 from controller.signout import Signout
-from controller.page import About
-from controller.api import Article as ART
-from controller.api import Comment as com
+from controller.page import About,Type
+from controller.api import Article as ART,Comment as com
 urls = [
 	#首页
 	(r'/', Index),
@@ -23,5 +22,7 @@ urls = [
 	#退出
 	(r'/signout',Signout),
 	#关于
-	(r'/about',About)
+	(r'/about',About),
+	# 分类
+	(r'/type',Type)
 ]
