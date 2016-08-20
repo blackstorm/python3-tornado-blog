@@ -1,3 +1,10 @@
+# 刚刚学习Python 时候造的轮子，不建议大家拿来使用
+如果你只是希望用一个简单的博客
+
+https://github.com/blackstorm/lua-openresty-lor-blog
+
+同样不完善，不过很简洁
+
 # python3-tornado-blog
 python3+tornado+mysql Simple blog.
 
