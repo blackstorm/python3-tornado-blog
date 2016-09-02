@@ -21,4 +21,4 @@ python3+tornado+mysql Simple blog.
   
 DEMO
 -----------------------------------
-![demo](http://7xo6vj.com1.z0.glb.clouddn.com/15-11-11/8676930.jpg)
+图挂了...
