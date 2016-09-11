@@ -24,7 +24,7 @@ HTML中：
 5.使用 python setup.py install 安装mysql驱动(mysql官方的connector)
 6.@property广泛应用在类的定义中，可以让调用者写出简短的代码，同时保证对参数进行必要的检查，这样，程序运行时就减少了出错的可能性。
 7.重写了mysqldb：
-已经可以在controll中使用self.db
+已经可以在control中使用self.db
 也可以在DB中使用
 8.开启字典cursor = cnx.cursor(dictionary=True)
 9.添加Markdown解析使用Markdown2模块
